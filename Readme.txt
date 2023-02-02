@@ -12,6 +12,7 @@ customer_id, customer_name
 
 API Design:
 
+1. create records
 POST: /records
 {
     record:{}
@@ -19,6 +20,10 @@ POST: /records
     ...
 }
 
+2. create customers
+POST: /customers
+
+3. get rewards
 GET: /rewards/{id}
 
 {

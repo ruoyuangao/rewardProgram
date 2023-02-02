@@ -1,9 +1,7 @@
 package com.example.rewardprogram.service.impl;
 
-import com.example.rewardprogram.pojo.Record;
-import com.example.rewardprogram.pojo.RecordRequestDTO;
-import com.example.rewardprogram.pojo.Reward;
-import com.example.rewardprogram.pojo.RewardResponseDTO;
+import com.example.rewardprogram.pojo.*;
+import com.example.rewardprogram.repository.CustomerRepository;
 import com.example.rewardprogram.repository.RecordRepository;
 import com.example.rewardprogram.repository.RewardRepository;
 import com.example.rewardprogram.service.RewardProgramService;
@@ -21,10 +19,13 @@ public class RewardProgramServiceImpl implements RewardProgramService {
 
     private final RewardRepository rewardRepository;
 
+    private final CustomerRepository customerRepository;
+
     @Autowired
-    public RewardProgramServiceImpl (RecordRepository recordRepository, RewardRepository rewardRepository) {
+    public RewardProgramServiceImpl (RecordRepository recordRepository, RewardRepository rewardRepository, CustomerRepository customerRepository) {
         this.recordRepository = recordRepository;
         this.rewardRepository = rewardRepository;
+        this.customerRepository = customerRepository;
     }
 
     @Override
@@ -43,5 +44,10 @@ public class RewardProgramServiceImpl implements RewardProgramService {
     public RewardResponseDTO getRewardById(String id) {
         List<Reward> rewardList = this.rewardRepository.getRewardByCusId(id);
         return new RewardResponseDTO(rewardList);
+    }
+
+    @Override
+    public String createCustomer(Customer customer) {
+        return this.customerRepository.save(customer).getId();
     }
 }

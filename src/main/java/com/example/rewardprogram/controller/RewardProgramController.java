@@ -24,6 +24,12 @@ public class RewardProgramController {
         return new ResponseEntity<>( HttpStatus.CREATED);
     }
 
+    @PostMapping("/records")
+    public ResponseEntity<Void> createCustomer(@RequestBody Customer customer) {
+        this.service.createCustomer(customer);
+        return new ResponseEntity<>( HttpStatus.CREATED);
+    }
+
     @GetMapping("/rewards/{id}")
     public ResponseEntity<RewardResponseDTO> getRewardInfoById(@PathVariable String id) {
         RewardResponseDTO rewardResponseDTO = this.service.getRewardById(id);
