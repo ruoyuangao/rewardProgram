@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface RewardRepository extends JpaRepository<Reward, Long> {
 
-    @Query(value="select r.customer_id, DATE_FORMAT(r.record_created,'%Y%m') as months, sum(r.points_received) as ttl_points from Record r where r.customer_id = :id group by months")
+    @Query(value="select r.cus.id, r.cus.name, DATE_FORMAT(r.record_created,'%Y%m') as months, sum(r.points_received) as ttl_points from Record r where r.cus.id = :id group by months")
     List<Reward> getRewardByCusId(String id);
 }

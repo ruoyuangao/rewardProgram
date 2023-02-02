@@ -22,22 +22,8 @@ POST: /records
 GET: /rewards/{id}
 
 {
-    {
-        customer_id:
-        month:
-        ttl_points:
-    }
-    {
-            customer_id:
-            month:
-            ttl_points:
-        }
-    }
-    {
-            customer_id:
-            month:
-            ttl_points:
-        }
-    }
-    threemonth_ttl_reward:;
+    "customer_id": "1",
+    "customer_name": "John",
+    "monthly_reward": {},
+    "three_month_ttl_reward":
 }

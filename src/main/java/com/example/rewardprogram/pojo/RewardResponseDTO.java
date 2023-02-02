@@ -4,19 +4,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
 public class RewardResponseDTO {
-    private List<Reward> rewardList;
+    private String customer_id;
 
-    private Double threemonth_ttl_reward;
+    private String customer_name;
+
+    private Map<Integer, Double> monthly_reward;
+
+    private Double three_month_ttl_reward;
 
     public RewardResponseDTO(List<Reward> rewardList) {
-        this.rewardList = rewardList;
+        this.customer_id = rewardList.get(0).getCustomer_id();
 
-        for (Reward r : rewardList) {
-            this.threemonth_ttl_reward += r.getTtl_points();
+        this.customer_name = rewardList.get(0).getCustomer_name();
+
+        for (Reward reward : rewardList) {
+            this.monthly_reward.put(reward.getMonths(), reward.getTtl_points());
+            this.three_month_ttl_reward += reward.getTtl_points();
         }
+
     }
 }
