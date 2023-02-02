@@ -10,6 +10,7 @@ import com.example.rewardprogram.service.RewardProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -27,6 +28,7 @@ public class RewardProgramServiceImpl implements RewardProgramService {
     }
 
     @Override
+    @Transactional
     public void createRecords(RecordRequestDTO recordRequestDTO) {
         for (Record record : recordRequestDTO.getRecordList()) {
             double spend = record.getMoeny_spend();
