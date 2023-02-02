@@ -10,13 +10,13 @@ import java.util.List;
 public class RewardResponseDTO {
     private List<Reward> rewardList;
 
-    private Double ttl_reward;
+    private Double threemonth_ttl_reward;
 
     public RewardResponseDTO(List<Reward> rewardList) {
         this.rewardList = rewardList;
 
         for (Reward r : rewardList) {
-            this.ttl_reward += r.getTtl_points();
+            this.threemonth_ttl_reward += r.getTtl_points();
         }
     }
 }

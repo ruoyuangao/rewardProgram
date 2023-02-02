@@ -20,8 +20,9 @@ public class Record {
     @GeneratedValue
     private String record_id;
 
-    @Column(name = "customer_id")
-    private String customer_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer cus;
 
     @Column(name = "moeny_spend")
     private double moeny_spend;
